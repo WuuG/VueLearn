@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">{{ obj }} {{obj.name}} {{ number }} {{arr}} {{arr[arr.length - 1]}}</div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: '里面是一段字符串',
+                number: 9999,
+                arr: ['一段数组', '第二段数组', '第三段数组'],
+                obj: {
+                    name: '这是对象的名字',
+                    mobile: '13333333',
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

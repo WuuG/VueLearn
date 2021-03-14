@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .img {
+            width: 400px;
+            height: 400px;
+            background-color: seagreen;
+        }
+    </style>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="changeShow">改变显示</button>
+        <button @click="addAge">增加年龄</button>
+        <div class="img" v-if="isshow"></div>
+        <div class="img" v-if="age>17" style="background-color: skyblue;"></div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                isshow: false,
+                age: 17
+            },
+            methods: {
+                changeShow: function () {
+                    //这里this老是忘记用.
+                    this.isshow = !this.isshow;
+                },
+                addAge: function () {
+                    this.age++;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

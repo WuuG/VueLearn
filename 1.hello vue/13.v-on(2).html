@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="click('打印一次')">点击</button>
+        <form action="get">
+            <input type="text" name="" id="" @keyup.enter="sayHi" value="">
+        </form>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            methods: {
+                click: function (p1, p2) {
+                    console.log(p1);
+                },
+                sayHi: function () {
+                    console.log(input);
+                    console.log(input.value);
+                    alert(input.value);
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

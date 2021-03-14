@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="点击@" @click="alert">
+        <input type="button" value="点击v-on:" v-on:click="alert">
+        <button @dblclick="alert"> 双击</button>
+        <h1 @click="changeFood"> {{food}}</h1>
+    </div>
+
+
+    <script>
+        // 只绑定了第一个渲染的标签
+        var button = new Vue({
+            el: '#app',
+            // 操作DOM,在VUE中是操作数据
+            data: {
+                food: '好吃的'
+            },
+            methods: {
+                alert: function () {
+                    // alert('已经点击啦')
+                    //undefined 那么要如何获取标签的属性
+                    // console.log(button.value);
+                    console.log(this.value);
+                },
+                changeFood: function () {
+                    console.log(this.food);
+                    //拿方法内的指令.
+                    this.food += '西兰花'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .border {
+            outline: 2px solid seagreen;
+        }
+    </style>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <img v-bind:src='imgSrc' alt="">
+        <img :src='imgSrc' alt="" :title="title+'!!!'" :class="isShow ? 'border' : ''">
+        <img :src='imgSrc' alt="" :title="title+'!!!'" :class="{border:isShow}">
+        <button @click='change'>改变</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                imgSrc: 'img/monkey.gif',
+                title: '猴子logo',
+                isShow: false,
+            },
+            methods: {
+                change: function () {
+                    this.isShow = !this.isShow;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item,index) in arr">前端学习技术{{index + 1}}:{{item}}</li>
+        </ul>
+        <h1 v-for="(item,index) in objArr" :title="item.name">{{'学校:'+item.name+'班级:'+item.class}}</h1>
+        <button @click="add">添加</button>
+        <button @click="remove">删除</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                arr: ['java', 'javascript', 'html', 'css', 'vue', 'vuex', 'vuecli', 'node.js'],
+                objArr: [
+                    { name: 'fzu', class: '电子信息二班', },
+                    { name: 'hzu', class: '化工二班', },
+                ]
+            },
+            methods: {
+                add: function () {
+                    this.objArr.push({ name: '福州大学', class: 2 })
+                },
+                remove: function () {
+                    this.objArr.pop()
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

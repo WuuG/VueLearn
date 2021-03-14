@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body id="body">
+    <div id="app">
+        {{message}}
+    </div>
+    <div class="liverserver">
+        {{message}}
+        <div>{{message}}</div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello vue 第二种vue的安装方式'
+            }
+        })
+        var liverserver = new Vue({
+            el: '.liverserver',
+            data: {
+                message: '这里是测试liverserver  那么这个就是直接进行刷新啦 ，不错liveserver还是挺好用的,里面的子元素，竟然也使用同一个message 有点意思，那么表示，这个vue对象作用域，应该是liverserver的标签内咯，有点意思的是，如果我在里面再来一个子元素，要选择的话，是不是可以嵌套写呢。'
+            }
+        })
+        // var body = new Vue({    //vue实例不可以用html或者body
+        //     el: '#body',
+        //     data: {
+        //         message: '会报错哟'
+        //     }
+        // })
+    </script>
+</body>
+
+</html>

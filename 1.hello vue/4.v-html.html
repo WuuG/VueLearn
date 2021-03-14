@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1 v-text="message"></h1>
+        <!-- 只有html是解析标签的 -->
+        <h1 v-html="message"></h1>
+        <h1>{{ message}}</h1>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: '<a href="javascript:">百度</a>'
+            }
+        })
+    </script>
+</body>
+
+</html>

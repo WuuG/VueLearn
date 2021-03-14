@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app {
+            display: block;
+            width: 147px;
+            margin: 200px auto;
+            padding: 10px;
+            border: 1px solid #dcdfe6;
+        }
+
+        .span {
+            display: inline-block;
+            width: 50px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+        }
+    </style>
+    <script src="vue.js"></script>
+    <!-- 引入样式 -->
+    <!-- 引入组件库 -->
+
+</head>
+
+<body>
+    <div id="app">
+        <button @click="minus">
+            -
+        </button>
+        <span class="span">{{num}}</span>
+        <button @click="add">+</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: "Hello Element Plus",
+                num: 1,
+            },
+            methods: {
+                add: function () {
+                    if (this.num == 10) {
+                        alert('已经到达10啦')
+                        return false
+                    }
+                    this.num++;
+                },
+                minus: function () {
+                    if (this.num == 0) {
+                        alert('已经到达0啦')
+                        return false
+                    }
+                    this.num--;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
