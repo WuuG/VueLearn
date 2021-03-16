@@ -1,0 +1,28 @@
+/* 不太想一个调节表格的大小，算了 */
+* {
+  box-sizing: border-box;
+}
+div {
+  width: 800px;
+  margin: 100px auto;
+}
+table {
+  border-collapse: collapse;
+}
+thead {
+  background-color: #f7f5f7;
+}
+table tr {
+  height: 40px;
+  line-height: 40px;
+}
+
+table tr td {
+  padding-left: 10px;
+  border: 1px solid #f5f4f5;
+}
+table tr td:first-child {
+  padding-left: 0;
+  text-align: center;
+  width: 40px;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .line {
+      color: seagreen;
+    }
+
+    .active {
+      color: red;
+    }
+
+    .box {
+      background-color: #ccc;
+    }
+  </style>
+  <script src="js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 数组语法 -->
+    <!-- 同样也可以用数组来处理对象绑定 -->
+    <h2 :class="[active,line,box]">快速扩大手机打开拉萨角度来讲</h2>
+    <h2 :class="['active','line','box']">快速扩大手机打开拉萨角度来讲</h2>
+    <h2 :class="getClass()">快速扩大手机打开拉萨角度来讲</h2>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: '',
+        active: 'active',
+        line: 'line',
+        box: 'box'
+      },
+      methods: {
+        getClass: function () {
+          return [this.active, this.line, this.box]
+        }
+      }
+    })
+
+  </script>
+</body>
+
+</html>

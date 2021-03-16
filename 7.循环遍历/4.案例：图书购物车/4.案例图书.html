@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div v-if="books.length >= 1">
+      <table>
+        <thead>
+          <tr>
+            <td></td>
+            <td>书籍名称</td>
+            <td>出版日期</td>
+            <td>价格</td>
+            <td>购买数量</td>
+            <td>操作</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(book,index) in books" :key="book.id">
+            <td>{{index + 1}}</td>
+            <td>{{book.name}}</td>
+            <td>{{book.date}}</td>
+            <td>{{book.price | toRMB}}</td>
+            <!-- 这里的disable是如何实现的？ -->
+            <td><button :disabled="book.count <= 1" @click="decrease(index)">-</button>{{book.count}}<button
+                @click="increase(index)">+</button></td>
+            <td><button @click="clear(index)">移除</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <span>总价：{{totalPrice| toRMB}}</span>
+    </div>
+    <div v-else>请添加书籍！！！！</div>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        books: [
+          { name: '《算法导论》', date: '2005-8', price: 85.00, count: 1 },
+          { name: '《unix编程艺术》', date: '2001-5', price: 15.00, count: 1 },
+          { name: '《编程珠玑》', date: '2021-2', price: 245.00, count: 1 },
+          { name: '《代码大全》', date: '2022-3', price: 49.00, count: 1 }],
+
+      },
+      filters: {
+        toRMB: function (value) {
+          return '￥' + value.toFixed(2);
+        }
+      },
+      methods: {
+        increase(v) {
+          this.books[v].count++
+        },
+        decrease(v) {
+          this.books[v].count--
+        },
+        clear(v) {
+          this.books.splice(v, 1)
+        }
+      },
+      computed: {
+        totalPrice() {
+          // let totalPrice = 0;
+          // for (let book of this.books) {
+          //   totalPrice += book.count * book.price;
+          // }
+          // return totalPrice
+          //    这里的箭头函数要怎么使用啊
+          // return this.books.reduce((pre, cur) => pre + cur.count * cur.price)
+          return this.books.reduce(function (pre, cur) {
+            return pre + cur.count * cur.price;
+          }, 0)
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

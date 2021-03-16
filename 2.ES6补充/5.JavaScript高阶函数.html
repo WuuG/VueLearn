@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: ''
+      }
+    })
+    const nums = [10, 11, 2, 234, 123, 1224, 233, 15, 43, 123, 53];
+    // 1.filter(function () ) 每次一个数字进去的时候，进行一次回调函数。
+    //回调函数必须返回bool值，当返回时true时，则将回调的n加入进的数组，false则会过滤掉。
+    let newNums = nums.filter(function (n) {
+      return n < 100;
+    })
+    console.log(newNums);
+    // 2.map(function())的使用  回调函数返回一个值。
+    let newNums1 = newNums.map(function (n) {
+      return n * 2
+    })
+    console.log(newNums1);
+    //3.reduce() 对数组中的所有内容进行汇总
+    let total = newNums1.reduce(function (preValue, curValue) {
+      return preValue + curValue
+    }, 0)
+    console.log(total);
+    // 函数式编程
+    let total1 = nums.filter(function (n) {
+      return n < 100
+    }).map(function (n) {
+      return n * 2
+    }).reduce(function (pre, cur) {
+      return pre + cur
+    }, 0)
+    console.log(total1);
+    let total2 = nums.filter(n => n < 100).map(n => n * 2).reduce((pre, cur) => pre + cur);
+    console.log(total2);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .red {
+      color: red;
+    }
+  </style>
+  <script src="js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(movie,i) in movies" :key="movie.id" :Class="{'red':movie.isCurrent}" @click='onCurrent(i)'>
+        {{ movie.name }}
+      </li>
+    </ul>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        movies: [
+          { name: '舒克贝塔', isCurrent: false },
+          { name: '福州这联盟', isCurrent: false },
+          { name: '进击的巨人', isCurrent: false },
+          { name: '阿凡达', isCurrent: false }],
+
+      },
+      methods: {
+        onCurrent: function (i) {
+
+          for (var j = 0; j < this.movies.length; j++) {
+            this.movies[j].isCurrent = false;
+          }
+          this.movies[i].isCurrent = true;
+        },
+      }
+    })
+  </script>
+</body>
+
+</html>

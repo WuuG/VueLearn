@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+  <!-- <script src="../js/vue.js"></script> -->
+</head>
+
+<body>
+  <div id="app">
+
+  </div>
+  <script>
+    //1.const 修饰的标识符被赋值后，不能修改
+    // const name = 'why'
+    // name = 'aaa' //error
+    //2.在使用const定义标识符时，必须经行赋值。
+    // const lname; //error
+    //3.常量的含义是指向的对象不能修改，但是可以改变对象内部的属性。 所以其实是指针对吧。const就是不能修改指针地址。
+    const obj = {
+      name: 'xiaohong',
+      age: 18,
+    }
+    console.log(obj);
+    obj.name = 'xiao bai'
+    console.log(obj);
+
+
+
+
+  </script>
+</body>
+
+</html>

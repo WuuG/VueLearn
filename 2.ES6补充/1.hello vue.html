@@ -9,12 +9,19 @@
     <style>
 
     </style>
-    <script src="vue.js"></script>
+    <script src="js/vue.js"></script>
 </head>
 
 <body>
+    <div id="app">{{message}}</div>
     <script>
-
+        // const(常量) and let(变量)
+        const app = new Vue({
+            el: '#app',  //用于挂在要管理的元素
+            data: { //定义数据.
+                message: 'hello vue again!'
+            }
+        })
     </script>
 </body>
 

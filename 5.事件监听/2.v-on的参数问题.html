@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <button @click='click1'>按钮1</button>
+    <button @click='click1()'>按钮2</button>
+
+    <!-- 事件定义是， -->
+    <button @click="click2('按钮3')">按钮3</button>
+    <!-- undefined -->
+    <button @click="click2()">按钮4</button>
+    <!-- MouseEvent -->
+    <button @click="click2">按钮5</button>
+
+    <!-- 方法定义是，需要event和其他参数 -->
+    <!-- 调用方法时，如何手动获取event对象，$event -->
+    <button @click="click3('abc',$event)">按钮6</button>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: ''
+      },
+      methods: {
+        click1() {
+          console.log('按钮1');
+        },
+        click2(click2) {
+          console.log(click2 + '按钮的打印');
+        },
+        click3(abc, e) {
+          console.log(abc, '+++++++', e);
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+  <script src="js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <!-- <li :style="{key(属性名)：value(属性值)}">1111222</li> -->
+      <!-- 中文冒号,千万小心,加单引号否则会被当初变量 -->
+      <li :style="{fontSize:'50px'}">{{message}}</li>
+      <li :style="{fontSize:finalsize,color:color}">{{message}}</li>
+      <li :style="{fontSize:fsize + 'px'}">{{message}}</li>
+      <li :style="getStyle()">{{message}}</li>
+
+    </ul>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好',
+        finalsize: '50px',
+        fsize: 50,
+        color: 'red',
+      },
+      methods: {
+        getStyle: function () {
+          return { fontSize: this.finalsize, color: this.color }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

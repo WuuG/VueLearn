@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+
+  <div id="app">
+    <span v-if="type == 'user'">
+      <label for="user">用户名</label>
+      <input type="text" placeholder="请输入用户名" id="user">
+    </span>
+    <span v-else>
+      <label for="email">邮箱名</label>
+      <input type="text" placeholder="请输入邮箱" id="email">
+    </span>
+    <button @click="change">切换类型</button>
+
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '',
+        type: 'user',
+      },
+      methods: {
+        change() {
+          console.log('change');
+          //这种写法确实不好
+          if (this.type == 'user') {
+            this.type = 'email'
+          } else {
+            this.type = 'user'
+          }
+        }
+      },
+
+    })
+  </script>
+</body>
+
+</html>

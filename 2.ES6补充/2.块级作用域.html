@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+
+  </div>
+  <button>按钮1</button><button>按钮2</button><button>按钮3</button><button>按钮4</button><button>按钮5</button>
+  <script>
+    //ES5if和for没有块级作用域，只有function有。而ES6就都有了块级作用域的了
+    //1.变量作用域：变量再什么方位内是可用的
+    {
+      var name = 'why'
+      console.log(name);
+    }
+    console.log(name); //外面也可以打印，没有块级作用域。
+    //2，没有块级作用域引起的问题
+    var func;
+    if (1) {
+      var name = 'why'  // 内部的定义，在外部会被修改。
+      fuc = function () {
+        console.log(name);
+      }
+      fuc();
+    }
+    name = 'kobe'
+    fuc();
+    // 3.无块级作用域引起的问题：for
+    // 闭包可以解决问题：因为函数是一个作用域。 闭包竟然是立即执行函数。
+    // var btns = document.querySelectorAll('button')
+    // for (var i = 0; i < btns.length; i++) {
+    //   (function (i) {
+    //     btns[i].addEventListener('click', function () {
+    //       console.log(i + '被点击了');  //i == 5
+    //     })
+    //   })(i)
+    // }
+
+    // 4.es6的写法
+    const btns = document.querySelectorAll('button')
+    for (let i = 0; i < btns.length; i++) {
+      //在块级作用域内，i的值没有发生变化。
+      btns[i].addEventListener('click', function () {
+        console.log(i + 1);
+      })
+    }
+
+    //5.测试一下有趣的东西
+    // const btns = document.querySelectorAll('button')
+    // for (var i = 0; i < btns.length; i++) {
+    //   //在块级作用域内，i的值没有发生变化。
+    //   btns[i].addEventListener('click', function () { //每个按钮点击的时候，都是10000
+    //     console.log(i);
+    //   })
+    // }
+    // i = 10000;
+  </script>
+</body>
+
+</html>

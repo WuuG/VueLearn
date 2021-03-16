@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 其实双向绑定还是有点复杂的，因为不是所有东西都可以绑定的哦 -->
+        <img v-bind:src="imgSrc" alt="">
+        <a :href="aHref">百度一下</a>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: '',
+                imgSrc: 'images/black.png',
+                aHref: 'http://www.baidu.com',
+            }
+        })
+    </script>
+</body>
+
+</html>

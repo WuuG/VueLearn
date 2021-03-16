@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>书的总价格是:{{bookTotalPeice}}</h1>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '123',
+        book: [
+          { id: 11, name: '自顶向下计算机网络', price: 110 },
+          { id: 12, name: '代码大全', price: 105 },
+          { id: 13, name: '深入理姐计算机原理', price: 99 },
+          { id: 14, name: '现代操作系统', price: 275 },
+        ]
+      },
+      computed: {
+        bookTotalPeice(book) {
+          let sum = 0
+          console.log(this.message);
+          for (let i = 0; i < this.book.length; i++) {
+            sum += this.book[i].price;
+          }
+          return sum;
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

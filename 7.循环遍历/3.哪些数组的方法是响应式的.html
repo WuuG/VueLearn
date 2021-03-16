@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <!-- 这里的key需要一一对应 -->
+      <li v-for="item in letters" :key="item.id">
+        {{ item }}
+      </li>
+      <button @click="btnClick">点击</button>
+    </ul>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        letters: ['A', 'D', 'B', 'F', 'E']
+      },
+      methods: {
+        btnClick() {
+          // 1.push方法 可以一次push多个 响应式
+          // this.letters.push('aaa');
+          // 2.通过索引值修改数组中元素 不改变
+          // this.letters[0] = 'aaaa';
+          //3.pop() 删除最后一个元素  响应式
+          // this.letters.pop();
+          //4.shift()  删除第一个元素 响应式
+          // this.letters.shift()
+          //5.unshift() 在数组最前面添加元素 响应式
+          // this.letters.unshift('aaaa', 'bbbbb', 'ccccc')
+          //6.splice()  替换 响应式的
+          // this.letters.splice(1, 1, 'a')  
+          // 7.sort()   排序 响应式的
+          // this.letters.sort();  
+          // 8.reverse()   翻转 响应式的
+          this.letters.reverse()
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

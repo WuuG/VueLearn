@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 1.checkbox单选框 -->
+    <input type="checkbox" id="license" v-model="isAgree">
+    <label for="license">同意协议</label>
+    <h2>您选择的是{{isAgree}}</h2>
+    <button :disabled="!isAgree">下一步</button></br>
+    <!-- 2.chexkbox多选框 -->
+    <label for="a"> <input type="checkbox" name="a" id="" value="篮球" v-model="hobbies">篮球</label>
+    <label for="b"> <input type="checkbox" name="b" id="" value="羽毛球" v-model="hobbies">足球</label>
+    <label for="c"> <input type="checkbox" name="c" id="" value="乒乓球" v-model="hobbies">羽毛球</label>
+    <h2>您的爱好是{{hobbies}}</h2>
+
+    <label v-for="item in originfruits" :for="item">
+      <input type="checkbox" :id="item" :value="item" v-model="fruits">{{item}}
+    </label>
+    <h2>复选框的原始数据:{{originfruits}}</h2>
+    <h2>您选择的水果是:{{fruits}}</h2>
+  </div>
+
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '',
+        isAgree: false,
+        hobbies: [],
+        originfruits: ['苹果', '殷桃', '樱桃', '水套', '油桃', '苹果', '西瓜'],
+        fruits: [],
+      }
+    })
+  </script>
+</body>
+
+</html>
