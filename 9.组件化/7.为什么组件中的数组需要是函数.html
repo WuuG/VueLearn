@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+  </div>
+  <template id="cpn">
+    <div>
+      <button @click="decrease">-</button>
+      <h2>当前计数：{{count}}</h2>
+      <button @click="increase">+</button>
+    </div>
+  </template>
+  <script>
+    const obj = {
+      count: 0,
+    }
+    Vue.component('cpn', {
+      template: '#cpn',
+      data() {  //因为同一个组件会多次复用，因此需要不同的数据，以免互相影响，而函数就有着不同的存储空间。
+        return {  //这里其实是返回一个新的对象，所以大家都不一样。
+          count: 0,
+        }
+        // return obj;  //这里就是返回同一个对象，因此数据会互相影响。
+      },
+      methods: {
+        increase() {
+          this.count++;
+        },
+        decrease() {
+          this.count--;
+        }
+      },
+    })
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: ''
+      }
+    })
+  </script>
+</body>
+
+</html>

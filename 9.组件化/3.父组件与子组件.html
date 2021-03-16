@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <my-cpn2>
+    </my-cpn2>
+    <!-- <my-cpn1></my-cpn1> 如果没有在app中声名，这里会报错，因为跳出了作用域 -->
+  </div>
+  <script>
+    // 1.创建第一个组件（创建组件要在vue对象外面哦）
+    const cpnC1 = Vue.extend({
+      template: `
+      <div>
+      <h2>这是cpnC1</h2>
+      <p>这是cpnC1的内容
+      </p>
+    </div> `,
+    })
+    // <my-cpn1></my-cpn1> 在父组件中已经被编译成普通的标签.
+    const cpnC2 = Vue.extend({
+      template: `
+      <div>
+      <my-cpn1></my-cpn1> 
+      <h2>这是cpnC2</h2>
+      <p>这是cpnC2的内容
+      </p>
+    </div> `, //cpn2为父组件，cpn1为子组件。 因此cpn2中可以放cpn1.
+      components: {
+        myCpn1: cpnC1,
+      }
+    })
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: ''
+      },
+      components: {
+        myCpn2: cpnC2,
+        // myCpn1: cpnC1,
+      },
+    })
+  </script>
+</body>
+
+</html>

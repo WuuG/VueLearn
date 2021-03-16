@@ -14,14 +14,34 @@
 
 <body>
   <div id="app">
-
+    <cpn1></cpn1>
+    <cpn2></cpn2>
   </div>
   <script>
+    // 1.语法糖全局组件
+    Vue.component('cpn1', {
+      template: `
+      <div>
+      <h2>这是cpnC1</h2>
+      <p>这是cpnC1的内容
+      </p>
+    </div> `,
+    })
     const app = new Vue({
       el: '#app',
       data: {
         message: ''
-      }
+      },
+      //局部组件的语法糖
+      components: {
+        'cpn2': {
+          template: `
+        <div>
+          <h2>这是cpn2</h2>
+          <p>这是cpn2的内容</p>
+        </div> `
+        }
+      },
     })
   </script>
 </body>

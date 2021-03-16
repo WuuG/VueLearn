@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <my-cpn></my-cpn>
+    <my-cpn></my-cpn>
+  </div>
+  <div id="app2">
+    <my-cpn></my-cpn>
+    <my-cpn></my-cpn>
+
+  </div>
+  <script>
+    const cpnC = Vue.extend({
+      template: `
+      <div>
+      <h2>是个标题</h2>
+      <p>来个内容</p>
+    </div>
+      `
+    })
+    // Vue.component('my-cpn', cpnC) //全局组件
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: ''
+      },
+      components: {
+        //标签名： 组件名
+        myCpn: cpnC //局部组件
+      },
+    })
+    const app2 = new Vue({
+      el: '#app2',  //当my-cpn组件全局时，不报错。  局部时报错
+    })
+  </script>
+</body>
+
+</html>

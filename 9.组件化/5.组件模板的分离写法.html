@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <cpn></cpn>
+    <cpn1></cpn1>
+  </div>
+  <!-- 1.script标签 ，类型需要是text/x-template -->
+  <script type="text/x-template" id="cpn">
+    <div>
+      <h2>cpn</h2>
+      <p>里面cpn的内容</p>
+    </div>
+  </script>
+  <!-- 2.使用template标签 -->
+  <template id="cpn1">
+    <div>
+      <h2>cpn1</h2>
+      <p>里面cpn1的内容</p>
+    </div>
+  </template>
+  <script>
+    Vue.component('cpn', {
+      template: `#cpn`
+    })
+    Vue.component('cpn1', {
+      template: `#cpn1`
+    })
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: ''
+      }
+    })
+  </script>
+</body>
+
+</html>

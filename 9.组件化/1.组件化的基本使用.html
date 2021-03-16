@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 3.使用组件 -->
+    <my-cpn></my-cpn>
+  </div>
+  <script>
+    //ES6的语法  `abc`定义字符串  可换行
+    /*  `div  
+    aaaa` */  //  是可以这样写的
+    // 1.创建组件构造器对象
+    const cpnC = Vue.extend({ //在这个版本中已经看不到这种写法。当然底层还有
+      template: `
+      <div>
+      <h2>我是标题</h2>
+      <p>我是内容，哈哈哈哈哈</p>
+      <p>嘿嘿嘿嘿嘿嘿</p>
+    </div>
+      `
+    })
+    // 2.注册对象
+    Vue.component('my-cpn', cpnC);
+    //这里注意，一定要先将组件的定义与注册都放在Vue对象之前。
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: ''
+      }
+    })
+
+  </script>
+</body>
+
+</html>
