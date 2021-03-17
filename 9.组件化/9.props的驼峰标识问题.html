@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- V-bind在这里不支持驼峰，看error是html标签属性不支持驼峰的意思 -->
+    <cpn :c-message="message" :c-my-info="info"></cpn>
+  </div>
+  <template id="cpn">
+    <div>
+      <h2>{{cMessage}}}</h2>
+      <h2>{{cMyInfo}}</h2>
+    </div>
+  </template>
+  <script>
+    const cpn = {
+      template: '#cpn',
+      props: {
+        //这里为什么不能用驼峰标识呢？
+        cMessage: {
+          type: Object,
+          default() {
+            return {
+              name: '',
+              age: 0,
+              hobbies: [],
+            }
+          }
+        },
+        cMyInfo: {
+          type: String,
+          default: '这里是info的默认值',
+        }
+      }
+    }
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: {
+          name: 'wgdd',
+          age: 18,
+          hobbies: ['1', '2', '3']
+        },
+        info: '这里是传递的information'
+      },
+      components: {
+        cpn,
+      },
+    })
+  </script>
+</body>
+
+</html>

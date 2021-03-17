@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 默认发射自定义事件的变量 -->
+    <cpn @item-click="cpnClick"></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <button v-for="categorie in categories" :key="categorie.id" @click="itemClick(categorie)">
+        {{ categorie.name }}
+      </button>
+    </div>
+  </template>
+
+  <script>
+    const cpn = {
+      template: '#cpn',
+      data() {
+        return {
+          categories: [
+            { id: 'aaa', name: '热门推荐' },
+            { id: 'bbb', name: '手机数码' },
+            { id: 'ccc', name: '家用极爱' },
+            { id: 'ddd', name: '电脑办公' },
+          ]
+        }
+      },
+      methods: {
+        itemClick(obj) {
+          // console.log(obj);
+          // 发射事件，记得this  这里用驼峰没办法把自定义事件发射出去，但是用脚手架构建的项目是可以的。
+          // ￥emit('自定义事件', 变量)
+          this.$emit('item-click', obj)
+        }
+      },
+    }
+
+    const app = new Vue({
+      el: '#app',
+      components: {
+        cpn,
+      },
+      methods: {
+        cpnClick(obj) {
+          console.log('cpn', obj);
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <cpn :c-num1="num1" :c-num2="num2" @change-num1="changeNum1" @change-num2="changeNum2"></cpn>
+    <h2>num1:{{num1}}</h2>
+    <h2>num2:{{num2}}</h2>
+  </div>
+  <template id="cpn">
+    <div>
+      <input type="text" @input="changeNum1(dNum1)" v-model.number="dNum1">
+      <h2>这里是一个数字cNum1:{{cNum1}}</h2>
+      <h2>这里是一个数字dNum1:{{dNum1}}</h2>
+      <input type="text" @input="changeNum2(dNum2)" v-model.number="dNum2">
+      <h2>这里是一个数字cNum2:{{cNum2}}</h2>
+      <h2>这里是一个数字dNum2:{{dNum2}}</h2>
+    </div>
+  </template>
+
+  <script>
+    const cpn = {
+      template: '#cpn',
+      data() {
+        return {
+          dNum1: this.cNum1,
+          dNum2: this.cNum2,
+        }
+      },
+      //这是父组件通信接受来的值，不应改随意修改的，若要修改，需要去修改父组件所传递的值。
+      props: {
+        cNum1: {
+          type: Number,
+          default: 91,
+        },
+        cNum2: {
+          type: Number,
+          default: 92,
+        },
+      },
+      methods: {
+        changeNum1(num) {
+          this.$emit('change-num1', num)
+          // this.dNum2 = num * 100;
+          console.log('type:', typeof num);
+        },
+        changeNum2(num) {
+          this.$emit('change-num2', num)
+          // this.dNum1 = num / 100;
+        }
+      },
+    }
+    const app = new Vue({
+      el: '#app',
+      data: {
+        num1: 1,
+        num2: 2,
+      },
+      components: {
+        cpn,
+      },
+      methods: {
+        changeNum1(num) {
+          this.num1 = num;
+          this.num2 = num * 100  //55 75行可以使值修改
+        },
+        changeNum2(num) {
+          this.num2 = num;
+          this.num1 = num / 100
+        }
+      },
+
+    })
+  </script>
+</body>
+
+</html>
