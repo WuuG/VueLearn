@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 会将所有未取名的slot全部覆盖 -->
+    <!-- <cpn><span>标题</span></cpn> -->
+    <cpn><button slot="mid">修改中间的插槽</span></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <!-- 给插槽取名，用以区分插槽 -->
+      <slot name="left"><span>左边</span></slot>
+      <slot name="mid"><span>中间</span></slot>
+      <slot><span>右边</span></slot>
+    </div>
+  </template>
+  <script>
+    const cpn = {
+      template: '#cpn',
+    }
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: ''
+      },
+      components: {
+        cpn,
+      },
+    })
+  </script>
+</body>
+
+</html>

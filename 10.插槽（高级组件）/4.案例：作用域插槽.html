@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <cpn>
+      <!-- 如何获取子组件的languages呢？老版本必须要template -->
+      <template slot-scope="slot">
+        <span v-for="item in slot.data" :key="item.id">
+          {{ item }} -
+        </span> <br>
+        <span>
+          {{slot.data.join(' - ')}}
+        </span>
+      </template>
+    </cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <slot :data="languages">
+        <ul>
+          <li v-for="language in languages" :key="language.id">
+            {{ language }}
+          </li>
+        </ul>
+      </slot>
+    </div>
+  </template>
+  <script>
+
+    const cpn = {
+      template: '#cpn',
+      data() {
+        return {
+          languages: ['JavaScript', 'c++', 'c#', 'python', 'html5']
+        }
+      }
+    }
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: ''
+      },
+      components: {
+        cpn,
+      },
+    })
+  </script>
+</body>
+
+</html>

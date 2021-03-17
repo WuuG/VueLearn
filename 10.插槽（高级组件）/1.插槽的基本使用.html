@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <cpn>
+    </cpn>
+    <cpn>
+      <span>嘿嘿嘿嘿嘿嘿</span></span>
+    </cpn>
+    <cpn>
+
+    </cpn>
+    <cpn>
+      <h1>这是个很大的标题</h1>
+      <div>div元素啦</div>
+      <a href="#">这里是个a标签</a>
+    </cpn>
+  </div>
+  <template id="cpn">
+    <div>
+      <h2>这是cpn组件</h2>
+      <!-- 1.预备一个插槽，用以复用，可以在插槽中放默认值，若没有值传入，则显示默认值 -->
+      <!-- 2. 若是有多个元素在标签中，会将全部内容放到slot当中 -->
+      <slot><button>按钮</button></slot>
+    </div>
+  </template>
+  <script>
+    const cpn = {
+      template: '#cpn',
+    }
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: ''
+      },
+      components: {
+        cpn,
+      },
+    })
+  </script>
+</body>
+
+</html>
