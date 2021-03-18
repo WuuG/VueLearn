@@ -1,4 +1,5 @@
 const path = require('path')
+const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
   entry: './src/main.js',
@@ -61,12 +62,22 @@ module.exports = {
           }
         }
       },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
     ],
   },
   resolve: {
+    //有趣，在js文件中引入vue文件还是要.vue结尾,而在vue文件的引入就不需要了，为啥呢？
+    extensions: ['.js', '.css', '.vue'],
     //alias: 别名
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
     }
-  }
+  },
+  plugins: [
+    // 请确保引入这个插件！
+    new VueLoaderPlugin()
+  ]
 }

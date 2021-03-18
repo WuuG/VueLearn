@@ -18,14 +18,15 @@ document.writeln('<h2>现在测试下less的loader是否安装</h2>')
 import Vue from 'vue' //runtime-only  代码中，不可以有任何的template 
 // import Vue from 'vue/dist/vue.esm.js'; //runtime-compiler(编译程序) 其可以对template进行编译 已经写道配置文件中了
 
+// import App from './vue/app'
+import App from './vue/App.vue'
+
+
+
 new Vue({ //真实开发不用赋值
   el: '#app',
-  template: `
-    <div>
-      <h2>{{message}}</h2>
-    </div>
-  `,
-  data: {
-    message: '这里是来自vue的消息：hello world'
-  }
+  template: `<App></App>`,
+  components: {
+    App,
+  },
 })
