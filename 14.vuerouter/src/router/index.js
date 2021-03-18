@@ -23,6 +23,12 @@ const routes = [
     name: 'about',
     component: () => import('../components/About.vue'),
   },
+  {
+    //1.第一步配置动态路由参数  index.js
+    path: '/user/:userId',
+    name: 'user',
+    component: () => import('../components/User'),
+  },
 ]
 const router = new VueRouter({
   //配置路径和组件之间的应用关系。

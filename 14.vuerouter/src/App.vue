@@ -11,6 +11,8 @@
     <router-link to="/about" replace tag="button"> 关于我 </router-link> -->
     <el-button @click="toHome">首页</el-button>
     <el-button @click="toAbout">关于</el-button>
+    <!-- 第二步.当路由跳转的时候需要传递值，否则报错 -->
+    <router-link :to="'/user/' + userId" tag="button">用户</router-link>
     <router-view></router-view>
   </div>
 </template>
@@ -18,8 +20,14 @@
 <script>
 export default {
   name: "App",
+  data() {
+    return {
+      userId: "zhangzhangwww",
+    };
+  },
   methods: {
     toHome() {
+      console.log(this.$route);
       //vue-router源码 将所有组件都添加了@router属性
       if (this.$router.history.current.path != "/home") {
         // this.$router.push("/home");
