@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <script>
+    //1.参数问题：
+    //1.1两个参数
+    const sum = (num1, num2) => {
+      return num1 + num2;
+    }
+    //1.2一个参数可以省略括号
+    const power = num => {
+      return num * num
+    }
+    //2.函数中
+    //2.1函数中有多行代码时
+    const text = () => {
+      console.log('hello world');
+      console.log('hello world');
+    }
+    //2.2函数中仅有一行代码时,省略花括号，并自动return
+    const mul = (num1, num2) => num1 * num2
+    console.log(mul(2, 8)); //
+    const h = 'hello world'
+    const demo = h => console.log(h);
+    console.log(demo(h));  // hello world undefined
+  </script>
+</body>
+
+</html>

@@ -9,20 +9,20 @@
   <style>
 
   </style>
-  <script src="../js/vue.js"></script>
 </head>
 
 <body>
-  <div id="app">
 
-  </div>
   <script>
-    const app = new Vue({
-      el: '#app',
-      data: {
-        message: ''
-      }
-    })
+    //箭头函数也是一种定义函数的方式
+    const aaa = function () {
+      console.log(aaa);
+    }
+    //es6中的箭头函数
+    // const ddd = (参数列表) => { }
+    const ddd = () => {
+      console.log(aaa);//这上诉aaa的函数是一模一样的
+    }
   </script>
 </body>
 
