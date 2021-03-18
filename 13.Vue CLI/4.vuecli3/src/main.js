@@ -6,4 +6,4 @@ Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
-}).$mount('#app') 
+}).$mount('#app') //这里其实就是挂载啦。
