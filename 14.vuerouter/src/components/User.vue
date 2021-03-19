@@ -7,6 +7,7 @@
 
 <script>
 export default {
+  name: "user",
   data() {
     return {
       message: "这是一条来自用户的信息",
@@ -21,8 +22,11 @@ export default {
   },
   // created() {
   //   //页面创建回调
-  //   console.log("created User");
-  //   document.title = "用户";
+  //   console.log("user 创建");
+  // },
+  // destroyed() {
+  //   //销毁回调
+  //   console.log("user 销毁");
   // },
 };
 </script>

@@ -19,8 +19,8 @@
     </router-link> -->
     <el-button @click="toUser">用户</el-button>
     <el-button @click="toProfile">档案</el-button>
-    <!-- 第一步：保持页面的渲染 -->
-    <keep-alive>
+    <!-- 第一步：保持页面的渲染  两个属性 include和exclude-->
+    <keep-alive exclude="home">
       <router-view></router-view>
     </keep-alive>
   </div>

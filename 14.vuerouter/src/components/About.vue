@@ -9,8 +9,11 @@
 export default {
   // created() {
   //   //页面创建回调
-  //   console.log("created about");
-  //   document.title = "关于我";
+  //   console.log("about 创建");
+  // },
+  // destroyed() {
+  //   //销毁回调
+  //   console.log("about 销毁");
   // },
 };
 </script>

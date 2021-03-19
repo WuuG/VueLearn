@@ -19,6 +19,7 @@ const routes = [
   },
   {
     path: '/home',
+    name:'home',
     component: () => import('../components/Home.vue'),
     meta:{
       title:'首页title',
@@ -63,7 +64,7 @@ const routes = [
     name: 'profile',
     component:  profile,
     beforeEnter(to, from, next) {
-      console.log('这是独属于档案profile的路由守卫');
+      // console.log('这是独属于档案profile的路由守卫');
       document.title = '档案'
       next();
     },

@@ -12,6 +12,7 @@
 
 <script>
 export default {
+  name: "home",
   data() {
     return {
       message: "都要忘记怎么使用vue了",
@@ -19,10 +20,14 @@ export default {
     };
   },
 
-  created() {
-    //页面创建回调
-    console.log("created Home");
-  },
+  // created() {
+  //   //页面创建回调
+  //   console.log("created Home");
+  // },
+  // destroyed() {
+  //   //销毁回调
+  //   console.log("destory home");
+  // },
   // mounted() {
   //   //组件挂载回调
   //   console.log("mounted");
@@ -32,10 +37,6 @@ export default {
   //   console.log("updated");
   // },
 
-  destroyed() {
-    //销毁回调
-    console.log("destory home");
-  },
   //activated和deactivated两个回调函数都需要keep-alive作为前置条件
   deactivated() {
     //非活动时
