@@ -6,7 +6,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  // created() {
+  //   //页面创建回调
+  //   console.log("created about");
+  //   document.title = "关于我";
+  // },
+};
 </script>
 
 <style  scoped>

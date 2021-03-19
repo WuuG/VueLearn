@@ -19,6 +19,11 @@ export default {
       return this.$route.params.userId;
     },
   },
+  // created() {
+  //   //页面创建回调
+  //   console.log("created User");
+  //   document.title = "用户";
+  // },
 };
 </script>
 

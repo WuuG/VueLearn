@@ -20,6 +20,9 @@ const routes = [
   {
     path: '/home',
     component: () => import('../components/Home.vue'),
+    meta:{
+      title:'首页title',
+    },
     //第一步：添加子路由
     children: [
       {
@@ -42,18 +45,29 @@ const routes = [
   {
     path: '/about',
     name: 'about',
+    meta:{
+      title:'关于title',
+    },
     component: () => import('../components/About.vue'),
   },
   {
     //1.第一步配置动态路由参数  index.js
     path: '/user/:userId',
     name: 'user',
+    meta:{
+      title:'用户title',
+    },
     component: () => import('../components/User'),
   },
   {
     path: '/profile',
     name: 'profile',
     component:  profile,
+    beforeEnter(to, from, next) {
+      console.log('这是独属于档案profile的路由守卫');
+      document.title = '档案'
+      next();
+    },
   },
 ]
 const router = new VueRouter({
@@ -64,5 +78,19 @@ const router = new VueRouter({
   //这个属性能够修改 router-link的默认类的class名
   linkActiveClass:'active'
 })
+
+//前置钩子（hook） 
+router.beforeEach((to,from,next)=> {
+  // document.title = to.meta.title; 
+  //但是若有子路由就无法找到了，因为路径会走到子路由处，需要用下面的写法
+  document.title = to.matched[0].meta.title;
+  next() //next必须调用的。否则无法进行页面跳转
+})
+
+//后置钩子
+router.afterEach((to, from) => {
+    // console.log(to.matched[0].meta.title + '的后置钩子');
+});
+
 //3.将router对象传入router对象。(导出)
 export default router

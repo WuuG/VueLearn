@@ -17,6 +17,22 @@ export default {
       message: "都要忘记怎么使用vue了",
     };
   },
+  // created() {
+  //   //页面创建回调
+  //   console.log("created Home");
+  //   document.title = "首页";
+  // },
+  // mounted() {
+  //   //组件挂载回调
+  //   console.log("mounted");
+  // },
+  // updated() {
+  //   //页面刷新回调
+  //   console.log("updated");
+  // },
+  // destroyed () { //销毁回调
+  //   ;
+  // },
 };
 </script>
 
