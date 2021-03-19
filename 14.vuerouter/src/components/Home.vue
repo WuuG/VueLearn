@@ -15,13 +15,14 @@ export default {
   data() {
     return {
       message: "都要忘记怎么使用vue了",
+      path: "/home/news",
     };
   },
-  // created() {
-  //   //页面创建回调
-  //   console.log("created Home");
-  //   document.title = "首页";
-  // },
+
+  created() {
+    //页面创建回调
+    console.log("created Home");
+  },
   // mounted() {
   //   //组件挂载回调
   //   console.log("mounted");
@@ -30,9 +31,29 @@ export default {
   //   //页面刷新回调
   //   console.log("updated");
   // },
-  // destroyed () { //销毁回调
-  //   ;
-  // },
+
+  destroyed() {
+    //销毁回调
+    console.log("destory home");
+  },
+  //activated和deactivated两个回调函数都需要keep-alive作为前置条件
+  deactivated() {
+    //非活动时
+    console.log("deactivated home");
+  },
+  //第二步：记录path 并且用两个回调函数处理
+  activated() {
+    if (this.path != this.$route.path) {
+      this.$router.push(this.path);
+    }
+    console.log("activated Home");
+  },
+  beforeRouteLeave(to, from, next) {
+    console.log(from.path);
+
+    this.path = from.path;
+    next();
+  },
 };
 </script>
 

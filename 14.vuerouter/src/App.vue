@@ -19,7 +19,10 @@
     </router-link> -->
     <el-button @click="toUser">用户</el-button>
     <el-button @click="toProfile">档案</el-button>
-    <router-view></router-view>
+    <!-- 第一步：保持页面的渲染 -->
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 

@@ -27,8 +27,7 @@ const routes = [
     children: [
       {
         path: '',
-        name: 'defalut',
-        redirect: 'message',
+        redirect:'message'
       },
       {
         path: 'news',
@@ -83,14 +82,15 @@ const router = new VueRouter({
 router.beforeEach((to,from,next)=> {
   // document.title = to.meta.title; 
   //但是若有子路由就无法找到了，因为路径会走到子路由处，需要用下面的写法
+  // console.log(to);
   document.title = to.matched[0].meta.title;
   next() //next必须调用的。否则无法进行页面跳转
 })
 
 //后置钩子
-router.afterEach((to, from) => {
-    // console.log(to.matched[0].meta.title + '的后置钩子');
-});
+// router.afterEach((to, from) => {
+//     // console.log(to.matched[0].meta.title + '的后置钩子');
+// });
 
 //3.将router对象传入router对象。(导出)
 export default router
