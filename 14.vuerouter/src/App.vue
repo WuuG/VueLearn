@@ -13,6 +13,12 @@
     <el-button @click="toAbout">关于</el-button>
     <!-- 第二步.当路由跳转的时候需要传递值，否则报错 -->
     <router-link :to="'/user/' + userId" tag="button">用户</router-link>
+    <!-- 这里需要绑定后传递对象，里面有属性：path和query对象 -->
+    <router-link :to="{ path: '/profile', query: { name: 'why' } }"
+      >档案
+    </router-link>
+    <el-button @click="toUser">用户</el-button>
+    <el-button @click="toProfile">档案</el-button>
     <router-view></router-view>
   </div>
 </template>
@@ -27,7 +33,7 @@ export default {
   },
   methods: {
     toHome() {
-      console.log(this.$route);
+      // console.log(this.$route);
       //vue-router源码 将所有组件都添加了@router属性
       if (this.$router.history.current.path != "/home") {
         // this.$router.push("/home");
@@ -39,6 +45,23 @@ export default {
         // this.$router.push("/about");
         this.$router.replace("/about");
       }
+    },
+    toUser() {
+      console.log(this.$route.path);
+      if (this.$route.path != "/user/" + this.userId) {
+        this.$router.replace("/user/" + this.userId);
+      }
+    },
+    toProfile() {
+      this.$route.path != "/profile" || this.$route.query.name != this.userId
+        ? this.$router.replace({
+            path: "/profile",
+            query: {
+              name: this.userId,
+              age: 10,
+            },
+          })
+        : console.log(11);
     },
   },
 };

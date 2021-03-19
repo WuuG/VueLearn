@@ -1,9 +1,13 @@
 // 配置路由的相关信息
 import VueRouter from 'vue-router'
 import Vue from 'vue'
+
 //1.通过Vue.use(插件)来安装插件。
 Vue.use(VueRouter)
 
+const homeNews = () => import('@/components/HomeNews.vue')
+const homeMessage = () => import('@/components/HomeMessage.vue')
+const profile = () => import('@/components/Profile.vue')
 //2.创建VueRouter对象
 const routes = [
   {
@@ -15,8 +19,25 @@ const routes = [
   },
   {
     path: '/home',
-    name: 'home',
     component: () => import('../components/Home.vue'),
+    //第一步：添加子路由
+    children: [
+      {
+        path: '',
+        name: 'defalut',
+        redirect: 'message',
+      },
+      {
+        path: 'news',
+        name: 'news',
+        component: homeNews,
+      },
+      {
+        path: 'message',
+        name: 'message',
+        component: homeMessage,
+      },
+    ]
   },
   {
     path: '/about',
@@ -28,6 +49,11 @@ const routes = [
     path: '/user/:userId',
     name: 'user',
     component: () => import('../components/User'),
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component:  profile,
   },
 ]
 const router = new VueRouter({
