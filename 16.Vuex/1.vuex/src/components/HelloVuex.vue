@@ -1,7 +1,8 @@
 <template>
   <div>
-    <!-- <h2>{{ count }}</h2> -->
-    <h2>{{ message }}</h2>
+    <h2>_____________{{ message }}_____________</h2>
+    <h2>{{ $store.state.count }}</h2>
+    <h3>{{ this.$store.state.info }}</h3>
   </div>
 </template>
 

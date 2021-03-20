@@ -1,0 +1,1 @@
+export const INCREASE = 'increase'  //这里可以用常量替换
