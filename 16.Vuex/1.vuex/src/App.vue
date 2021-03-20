@@ -1,5 +1,13 @@
 <template>
   <div id="app">
+    <h1>_____________modules_____________</h1>
+    <h2>{{ $store.state.a.name }}</h2>
+    <h2>{{ $store.state.name }}</h2>
+    <button @click="updateName('修改了xiao a的名字')">修改名字</button>
+    <h2>{{ $store.getters.value }}</h2>
+    <h2>{{ $store.getters.value2 }}</h2>
+    <h2>{{ $store.getters.value3 }}</h2>
+    <button @click="aUpdateName">小a的异步操作</button>
     <h1>_____________响应式规则_____________</h1>
     <h3>{{ this.$store.state.info }}</h3>
     <button @click="commitInfo">修改信息</button>
@@ -82,6 +90,12 @@ export default {
     addPerson(person) {
       //数组对象
       this.$store.commit("addPersonStore", person);
+    },
+    updateName(name) {
+      this.$store.commit("updateName", name);
+    },
+    aUpdateName() {
+      this.$store.dispatch("aUpdateName");
     },
   },
   computed: {

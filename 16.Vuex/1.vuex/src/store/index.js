@@ -3,9 +3,43 @@ import Vuex from 'vuex'
 import { INCREASE } from "./mutations-types";
 
 Vue.use(Vuex);
+
+const moduleA =  {
+  state: {
+    name:'xiao a'
+  },
+  getters: {
+    value: state => {
+      return state.name +  '这是getters传递过来的值';
+    },
+    value2(state,getters) {
+      return getters.value + '____这是value2的拼接'
+    },
+    value3(state,getters,rootState) {
+      return getters.value2 + '_____拼接上store的count：'+rootState.count;
+    }
+  },
+  mutations: {
+    updateName(state, payload) {
+      state.name = payload
+      console.log('moduala');
+    }
+  },
+  actions: {
+    //updateValue({commit}, payload)
+    aUpdateName(context, payload) {
+      setTimeout(() => {
+        context.commit('updateName', '这是小a传递的名字');
+      }, 1000);
+    }
+  }
+};
+
+
 //这里的Store是大写 要注意呀
 const store = new Vuex.Store({
   state: {
+    name:'store',
     count:100,
     persons: [
       {id:'001',name:'aaa',age:10},
@@ -48,6 +82,10 @@ const store = new Vuex.Store({
     updateInfo(state,payload) {
       console.log(payload+'mutations');
       state.info.name="kobe";
+    },
+    updateName(state, payload) {  //conmmit两个都会执行，先执行store里的，然后执行mmoduleA的
+      state.a.name = '这是store修改的名字'
+      console.log('store a ');
     }
   },
   getters: {
@@ -87,7 +125,10 @@ const store = new Vuex.Store({
         }, 1000);
       })
     }
- }
+ },
+ modules: {
+   a:moduleA,
+ },
 })
 
 
