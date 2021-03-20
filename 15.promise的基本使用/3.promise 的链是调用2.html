@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+  <script>
+    // 三次网络请求嵌套，每次对一个数据进行拼接处理
+    // new Promise((solve, rej) => {
+    //   setTimeout(() => {
+    //     solve('aaa');
+    //   }, 1000);
+    // }).then(s => {
+    //   console.log('第一层的处理代码');
+    //   return new Promise(solve => {
+    //     s = s + '111';
+    //     solve(s);
+    //   }).then(s => {
+    //     console.log('第二层的处理代码');
+    //     console.log(s);
+    //     return new Promise(solve => {
+    //       s = s + '222',
+    //         solve(s)
+    //     }).then(s => {
+    //       console.log('第三层的处理代码');
+    //       console.log(s);
+    //     })
+    //   })
+    // })
+    console.log('开始');
+    new Promise((solve, rej) => {
+      setTimeout(() => {
+        solve('aaa');
+      }, 1000);
+    }).then(s => {
+      console.log(s, '第一层的处理代码');
+      return new Promise(solve => {
+        s = s + '111';
+        solve(s);
+      }).then(s => {
+        console.log(s, '第二层的处理代码');
+        return new Promise(solve => {
+          s = s + '222',
+            solve(s)
+        }).then(s => {
+          console.log(s, '第三层的处理代码');
+        })
+      })
+    })
+    console.log('结束');
+
+    // 若是直接对得到的值进行处理，可以简写为下式
+    new Promise((solve, rej) => {
+      setTimeout(() => {
+        solve('aaa');
+      }, 1000);
+    }).then(s => {
+      console.log(s, '第一层的处理代码');
+      return Promise.resolve(s + '111')
+    }).then(s => {
+      console.log(s, '第二层的处理代码');
+      return Promise.resolve(s + '222')
+    }).then(s => {
+      console.log(s, '第三层的处理代码');
+    })
+
+    //3.最后一种简写方法
+    new Promise((solve, rej) => {
+      setTimeout(() => {
+        solve('aaa');
+      }, 1000);
+    }).then(s => {
+      console.log(s, '第一层的处理代码');
+      return s + '111'
+    }).then(s => {
+      console.log(s, '第二层的处理代码');
+      return s + '222'
+    }).then(s => {
+      console.log(s, '第三层的处理代码');
+    })
+
+    // 4.若是有err时的简写
+    new Promise((solve, rej) => {
+      setTimeout(() => {
+        solve('aaa');
+      }, 1000);
+    }).then(s => {
+      console.log(s, '第一层的处理代码');
+      // return Promise.reject('err')  //若是有错误的简写
+      throw 'err message' //也可以用 throw进行简写
+    }).then(s => {
+      console.log(s, '第二层的处理代码');
+      return s + '222'
+    }).then(s => {
+      console.log(s, '第三层的处理代码');
+    }).catch(s => {
+      console.log(s);
+    })
+  </script>
+</body>
+
+</html>

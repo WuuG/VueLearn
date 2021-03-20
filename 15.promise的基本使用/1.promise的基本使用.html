@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // new Promise((resolve,reject)) 这两个参数(resolve,reject)均是函数 
+    // 链式编程
+    // new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     // 第一次网络请求代码
+    //     resolve()
+    //   }, 1000);
+    // }).then(() => {
+    //   // 第一次处理代码
+    //   console.log('hello vue');
+    //   console.log('hello vue');
+    //   console.log('hello vue');
+    //   // 第二次网络请求
+    //   return new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //       resolve()
+    //     }, 1000);
+    //   }).then(() => {
+    //     // 第二次处理代码
+    //     console.log('hello phython');
+    //     console.log('hello phython');
+    //     console.log('hello phython');
+    //     // 第三次网络请求
+    //     return new Promise((resolve, reject) => {
+    //       setTimeout(() => {
+    //         resolve();
+    //       }, 1000);
+    //     }).then(() => {
+    //       // 第三次处理代码
+    //       console.log('hello world');
+    //       console.log('hello world');
+    //       console.log('hello world');
+    //     })
+    //   })
+    // })
+    // 1.什么情况用到promise？ 有异步操作时，对异步操作进行封装。
+    //new -> 构造函数（1.保存一些状态信息，2.执行传入函数)
+    //执行回调函数时，传入两个函数参数。
+    new Promise((resolve, reject) => {
+      console.log('请直接执行。');
+      setTimeout(() => {
+        //这两个函数是会带return的，因此上面的执行了，下面的就不会执行
+        resolve('hello world'); //resolve 这里会传参给then 并在then中执行。
+        reject('调用失败')  //reject类似上面的。 会传参给catch 并在其中执行。
+      }, 1000);
+    }).then(s => {
+      console.log(s);
+    }).catch(s => {
+      console.log(s);
+    })
+  </script>
+</body>
+
+</html>

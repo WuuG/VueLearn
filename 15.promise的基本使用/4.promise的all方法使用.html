@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+  <script>
+    //需要两个请求作为前置条件再进行执行的需求
+    Promise.all([ //参数为数组，数组里放promise对象
+      new Promise((resolve, reject) => {
+        console.log('第一个网络请求');
+        // throw '第一个网络任务不让用了'  //若是两个网络请求之一没成功，则抛出异常
+        resolve('s1')
+      }),
+      new Promise((resolve, reject) => {
+        console.log('第二个网络请求');
+        // throw '第二个网络任务不让用了'  //若是两个网络请求之一没成功，则抛出异常
+        resolve('s2')
+      })
+    ]).then(res => {
+      console.log(res);
+    }).catch(s => {
+      console.log(s);
+    })
+  </script>
+</body>
+
+</html>
