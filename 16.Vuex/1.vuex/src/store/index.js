@@ -33,12 +33,21 @@ const store = new Vuex.Store({
     addPersonStore(state,person) {  //对象参数
       state.persons.push(person);
     },
-    updateInfo(state) {
+    // updateInfo(state,payload) {
+    //   // setTimeout(() => {  //Devtools无法跟踪异步操作,是错误代码，需要到action中去。
+    //   //   state.info.name='aaaaa'
+    //   // }, 1000);
+    //   // state.info['address'] = 'la' //旧版本无法添加，现在都可以啦
+    //   // delete state.info.age //可以删除啦
+    //   // Vue.set(state.info,'address','罗桑基');
+    //   // Vue.delete(state.info,'name');
+    //   // console.log(payload,'这里是mutations');
+    //   console.log(payload);
+    //   state.info.name="kobe";
+    // }
+    updateInfo(state,payload) {
+      console.log(payload+'mutations');
       state.info.name="kobe";
-      // state.info['address'] = 'la' //旧版本无法添加，现在都可以啦
-      delete state.info.age //可以删除啦
-      // Vue.set(state.info,'address','罗桑基');
-      Vue.delete(state.info,'name');
     }
   },
   getters: {
@@ -56,8 +65,30 @@ const store = new Vuex.Store({
         return state.persons.filter(n => n.age > age);
       }
     }
-  }
-}) 
+  },
+  actions: {
+  //   context 上下文 这里可以理姐成store
+  //   aUpdataInfo (context,payload) {
+  //       setTimeout(() => {
+  //         // console.log(payload,'这里是actions');
+  //         // context.commit('updateInfo',payload)  //经过action时去执行updateInfo
+  //         // payload();  // 通过调用这个payload来通知，异步函数已经执行完成。
+  //         context.commit('updateInfo',payload.info);
+  //         payload.success()
+  //       }, 1000);
+  //   }
+  // },
+    aUpdataInfo (context,payload) {
+      return new Promise((resolve,reject)=> {
+        setTimeout(() => {
+          context.commit('updateInfo',payload)
+          console.log(payload+'actions');
+          resolve('这是promise传递过来的参数')
+        }, 1000);
+      })
+    }
+ }
+})
 
 
 export default store

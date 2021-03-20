@@ -43,7 +43,25 @@ export default {
   },
   methods: {
     commitInfo() {
-      this.$store.commit("updateInfo");
+      // this.$store.commit("updateInfo");
+      // this.$store.dispatch("aUpdataInfo"); //通过dispatch到action中去执行异步操作。
+      // this.$store.dispatch("aUpdataInfo", "请携带payload去action");
+      // this.$store.dispatch("aUpdataInfo", () => {
+      //   console.log("函数调用成功 "); //用以通知 异步操作完成 但是这种方法，没办法传送参数啦。
+      // });
+      // this.$store.dispatch("aUpdataInfo", {
+      //   //当然这里可以用对象来处理，就可以带函数+参数了
+      //   info: "我是传递过去的信息",
+      //   success() {
+      //     console.log("函数调用成功啦");
+      //   },
+      // });
+      console.log("开始异步操作");
+      this.$store.dispatch("aUpdataInfo", "请携带payload去").then((s) => {
+        console.log(s);
+        console.log("异步操作结束");
+      });
+      console.log("跳过操作结束啊");
     },
     add() {
       this.$store.commit(INCREASE);
