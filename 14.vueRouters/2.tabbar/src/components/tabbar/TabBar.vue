@@ -4,9 +4,8 @@
       <!-- 父组件通过定义v-slot:子组件名称="自定义的对象" 通过 对象.子组件传递过来的参数 来进行使用
       在本例中, 自定义slot a是子组件传递来的参数 故可以表示为slot.a -->
       <template v-slot:text="slot">{{ slot.a.second }}</template>
-      <template v-slot:img
-        ><img src="../../assets/img/home.svg" alt=""
-      /></template>
+      <!-- 标签内部别名的使用 -->
+      <template v-slot:img><img src="~assets/img/home.svg" alt="" /></template>
       <template v-slot:img-active
         ><img src="../../assets/img/home-active.svg" alt=""
       /></template>
@@ -42,7 +41,8 @@
 </template>
 
 <script>
-import TabBarItem from "./TabBarItem";
+//import标签 别名的使用
+import TabBarItem from "components/tabbar/TabBarItem";
 export default {
   data() {
     return {
