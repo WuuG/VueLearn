@@ -91,34 +91,34 @@ new Vue({
 
 
 //5.封装request模块
-import { request, request1, request2, request3 } from './network/request'
+// import { request, request1, request2, request3 } from './network/request'
+import { request3 } from './network/request'
+// request({ url: 'category' }, res => {  //这是三个变量的写法
+//   console.log(res);
+// }, err => {
+//   console.log(err);
+// })
 
-request({ url: 'category' }, res => {  //这是三个变量的写法
-  console.log(res);
-}, err => {
-  console.log(err);
-})
+// request1({
+//   url: 'category',
+//   success(res) {
+//     console.log(res, '这是用对象封装进行调用的');
+//   },
+//   failure(err) {
+//     console.log(err);
+//   }
+// })
 
-request1({
-  url: 'category',
-  success(res) {
-    console.log(res, '这是用对象封装进行调用的');
-  },
-  failure(err) {
-    console.log(err);
-  }
-})
-
-request2({
-  url: 'category'
-}).then(res => {  //这里其实是request2里所return的那个promise的then，也就是resolve要调用的那个函数,reslove调用时，会传入实参，并调用底下这个函数
-  console.log(res, '这是promise方法封装的网络请求结果');
-}).catch(err => {
-  console.log(err);
-})
+// request2({
+//   url: 'category'
+// }).then(res => {  //这里其实是request2里所return的那个promise的then，也就是resolve要调用的那个函数,reslove调用时，会传入实参，并调用底下这个函数
+//   console.log(res, '这是promise方法封装的网络请求结果');
+// }).catch(err => {
+//   console.log(err);
+// })
 
 request3('category').then(res => {  //这里返回axios对象，其实是promise对象
   console.log(res, '最终方案，直接返回axios封装的网络请求结果');
 }).catch(err => {
-  console.log(err);
+  console.log('请求被拦截了，请返回config', err);
 })
