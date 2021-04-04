@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+  <div id="app">
+    <div>
+      {{message}}
+    </div>
+    <div>
+      {{message}}
+    </div>
+    <div id="obj">
+    </div>
+  </div>
+  <script>
+    const obj = {
+      message : "这里来测试一下",
+    }
+    //1.根据值的变化，来改变界面的值。
+    Object.keys(obj).forEach(key => {
+      let value = obj[key];
+      //每个key有自己的dep对象
+      Object.defineProperty(obj,key,{
+        set(newValue) {
+          console.log('监听key的改变',key);
+          //如何知道哪些元素，有使用这个属性。
+          //dep.notify()
+          value = newValue
+        },
+        //通过元素调用get属性的时候，来哪个元素使用这个属性。
+        get() {
+          return value
+        }
+      })
+    });
+    //  2.发布者订阅者模式
+    class Dep {
+      constructor(){
+        this.subs = []
+      }
+
+      addsub(Watcher) {
+        this.subs.push(Watcher)
+      }
+      // 通知各个元素去调用自己的update
+      notify() {
+        this.subs.forEach(item => {
+          item.update();
+        });
+        return 'success'
+      }
+    }
+    class Watcher {
+      constructor(message) {
+        this.message = message;
+      }
+
+      update() {
+        console.log(this.message + 'updata');
+      }
+    }
+    const dep = new Dep();
+    const w1 = new Watcher('这是Watcher添加的消息')
+    dep.addsub(w1);
+  </script>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      data: {
+        message:"这里来测试一下"
+      }
+    })
+  </script>
+</body>
+</html>
